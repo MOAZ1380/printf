@@ -1,9 +1,9 @@
 #include <stdarg.h>
 #include <stdio.h>
-#include "main.h"
 /**
  * _printf - Custom printf function.
  * @format: Format string.
+ *
  * Return: Num null byte used to end output to strings).
 */
 int _printf(const char *format, ...)
@@ -19,41 +19,30 @@ va_start(args, format);
 	if (*format == 'c')
 	{
 	int chararg = va_arg(args, int);
-		count++;
-		_putchar(chararg);
+		count += putchar(chararg);
 	}
 	else if (*format == 's')
 	{
 		char *str = va_arg(args, char *);
-		count += _printstr(str);
-	}
-	else if (*format == 'd' || *format == 'i')
-	{
-		int intarg = va_arg(args, int);
-		count+= _printint(intarg);
+	while (*str)
+		{
+		count += putchar(*str);
+			str++;
+		}
 	}
 	else if (*format == '%')
 	{
-		count++; 
-		_putchar('%');
+		count += putchar('%');
+		}
+	else
+	{
+	count += putchar('%');
+	count += putchar(*format);
+	}
 	}
 	else
 	{
-	count++;
-	_putchar('%');
-	count++;
-	_putchar(*format);
-	}
-	}
-	else if(*format == '\n')
-	{
-		count++;
-		_putchar(*format);
-	}
-	else
-	{
-		count++;
-		_putchar(*format);
+		count += putchar(*format);
 	}
 	format++;
 	}
