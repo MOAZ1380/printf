@@ -8,5 +8,9 @@ int _printf(const char *format, ...);
 int _putchar(char c);
 int _printstr(char *str);
 int _printint(int num);
+int decimalToBinary(int n);
+int print_hex(unsigned int num);
+int _printint_mi(int num);
+int print_oct(unsigned int num);
 
 #endif /* MAIN_H */
